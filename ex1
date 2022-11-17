@@ -1,0 +1,154 @@
+input_id = input("아이디를 입력해주세요.\n")
+def login(_id):
+    members = ['egoing', 'k8805', 'leezche']
+    for member in members:
+        if member == _id:
+            return True
+    return False
+if login(input_id):
+    print('Hello, '+input_id)
+else:
+    print('Who are you?')
+    
+# -*- coding: utf-8 -*-
+# UTF-8 encoding when using korean
+
+def egoing_a():
+    return 'a'
+#엄청 많은 코드
+def k8805_a():
+    return 'B'
+#엄청 많은 코드
+print(egoing_a())
+
+파이썬에선 대부분이 객체인데, 객체는 함수와 데이터를 묶어놓은 군집을 말한다. 
+예를들면 기타라는 객체의 함수는 핑거스타일로 연주하기, 스트링으로 연주하기 등이 있을 것이고, 데이터는 색깔, 종류, 이름 등이 있다.
+더 쉬운 예로 게임 속 주인공이 객체라고 한다면, 함수로는 걷기, 때리기, 점프하기, 데이터는 이름, 성별, 레벨 등이 그것이다.
+
+for반복문과 while반복문의 차이 for은 미리 정해진 횟수가 있을때, while은 미리 주어진 조건이 있을때 주로 사용한다! 
+또, for은' for 변수 in 리스트 '형태라면,while은 while 조건 형태이다.그리고 들여쓰기 후 실행내용
+
+모듈 문법
+가져오는 키워드: from import as
+모듈화를 하면 각각의 파일로 분리가 가능하며, 파일 가져오는 느낌으로 각 지정된 모듈을 호출할 수 있다.
+
+모듈 자체는 import로 가져옴.
+import 모듈_이름
+import 모듈.함수()
+
+대표적으로 랜덤 모듈 실행, 초이스 함수 호출 시
+import random으로 모듈 실행
+print (random.choice(리스트, 튜플 등 순서열))형태로 함수 호출
+random.randint() 특정 점수 범위 중 하나를 랜덤하게 선택
+
+모듈이란? 비슷한 함수끼리 모아둔 파일. 결국 함수들의 집합이 모듈이라는 것. 그래서 모듈함수와 내장함수가 헷갈릴 수 있음
+
+
+딕셔너리에 키(key)와 값(val)을 추가하는 코드: ['key변수']=val변수
+dict.keys() 딕셔너리에서 키만 뽑아 돌려줌
+dict.values() 딕셔너리에서 값만 뽑아 돌려줌
+dict.items() 딕셔너리에서 키와 값 모두 쌍으로 뽑아 돌려줌
+
+파이썬에서 자주 나오는 함수()에서 ()사이에는 인수값을 넣는데, 사이에 값을 넣지 않는 경우도 많다. 변수: 데이터를 저장하고 그 데이터를 유동적으로 변경하며 재사용할때 사용
+
+사용되는 범위를 기준으로, 지역변수와 전역변수, 사용되는 방향을 기준으로 인수와 매개변수로 구분
+인수: 전달하는 값, 매개변수: 전달된 값, 전달받는 값 상수: 변수와 달리 변경 불가능할때 사용
+.append() .sort() 등과 달리 del은 .del()이 아닌, del 리스트[할당값] 으로 해서 리스트 내에서 하나씩 지우는 것이다. 헷갈리지말것.
+
+def make_string(str, num):
+    return str*num
+print(make_string('b', 3))
+함수 문법
+정의 키워드: def():
+함수문 탈출 시 return(exit과 비슷하나 프로그램을 아예 종료하는 exit과 달리 실행시키고 함수문 내에서만 종료되는 차이가 있음. 반복문의 break와 비슷)
+함수는 내장함수와 모듈함수, 사용자정의함수가 있음. 내장과 모듈은 구분해야함.
+
+class Cal(object):
+    def __init__(self, v1, v2):
+        print(v1, v2)
+ 
+c1 = Cal(10,10)
+#print(c1.add())
+#print(c1.subtract())
+c2 = Cal(30,20)
+#print(c2.add())
+#print(c2.subtract())
+
+class C(object):
+    def __init__(self, v):
+        self.value = v
+    def show(self):
+        print(self.value)
+    def getValue(self):
+        return self.value
+    def setValue(self, v):
+        self.value = v
+c1 = C(10)
+print(c1.getValue())
+c1.setValue(20)
+print(c1.getValue())
+
+class Cal(object):
+    def __init__(self, v1, v2):
+        if isinstance(v1, int):
+            self.v1 = v1
+        if isinstance(v2, int):
+            self.v2 = v2
+    def add(self):
+        return self.v1+self.v2
+    def subtract(self):
+        return self.v1-self.v2
+    def setV1(self, v):
+        if isinstance(v, int):
+            self.v1 = v
+    def getV1(self):
+        return self.v1
+c1 = Cal(10,10)
+print(c1.add())
+print(c1.subtract())
+c1.setV1('one')
+c1.v2 = 30
+print(c1.add())
+print(c1.subtract())
+
+class C(object):
+    def __init__(self, v):
+        self.__value = v
+    def show(self):
+        print(self.__value)
+c1 = C(10)
+#print(c1.__value)
+c1.show()
+
+class C(object):
+    def __init__(self, v):
+        self.value = v
+    def show(self):
+        print(self.value)
+ 
+c1 = C(10)
+print(c1.value)
+c1.value = 20
+print(c1.value)
+c1.show()
+
+class Cal(object):
+    def __init__(self, v1, v2):
+        self.v1 = v1
+        self.v2 = v2
+
+    def add(self):
+        return self.v1+self.v2
+
+    def subtract(self):
+        return self.v1-self.v2
+
+
+c1 = Cal(10,10)
+print(c1.add())
+print(c1.subtract())
+c2 = Cal(30,20)
+print(c2.add())
+print(c2.subtract())
+
+
