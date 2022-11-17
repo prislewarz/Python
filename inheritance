@@ -1,0 +1,127 @@
+class Class1(object):
+    def method1(self): return 'm1'
+c1 = Class1()
+print(c1, c1.method1())
+ 
+class Class3(Class1):
+    def method2(self): return 'm2'
+c3 = Class3()
+print(c3, c3.method1())
+print(c3, c3.method2())
+ 
+class Class2(object):
+    def method1(self): return 'm1'
+    def method2(self): return 'm2'
+c2 = Class2()
+print(c2, c2.method1())
+print(c2, c2.method2())
+
+class Cal(object):
+    def __init__(self, v1, v2):
+        if isinstance(v1, int):
+            self.v1 = v1
+        if isinstance(v2, int):
+            self.v2 = v2
+    def add(self):
+        return self.v1+self.v2
+    def subtract(self):
+        return self.v1-self.v2
+    def setV1(self, v):
+        if isinstance(v, int):
+            self.v1 = v
+    def getV1(self):
+        return self.v1
+class CalMultiply(Cal):
+    def multiply(self):
+        return self.v1*self.v2
+class CalDivide(CalMultiply):
+    def divide(self):
+        return self.v1/self.v2
+c1 = CalMultiply(10,10)
+print(c1.add())
+print(c1.multiply())
+c2 = CalDivide(20,10)
+print(c2, c2.add())
+print(c2, c2.multiply())
+print(c2, c2.divide())
+
+class Cs:
+    @staticmethod
+    def static_method():
+        print("Static method")
+    @classmethod
+    def class_method(cls):
+        print("Class method")
+    def instance_method(self):
+        print("Instance method")
+i = Cs()
+Cs.static_method()
+Cs.class_method()
+i.instance_method()
+
+class Cs:
+    count = 0
+    def __init__(self):
+        Cs.count = Cs.count + 1
+    @classmethod
+    def getCount(cls):
+        return Cs.count
+i1 = Cs()
+i2 = Cs()
+i3 = Cs()
+i4 = Cs()
+print(Cs.getCount())
+
+lass Cal(object):
+    _history = []
+    def __init__(self, v1, v2):
+        if isinstance(v1, int):
+            self.v1 = v1
+        if isinstance(v2, int):
+            self.v2 = v2
+    def add(self):
+        result = self.v1+self.v2
+        Cal._history.append("add : %d+%d=%d" % (self.v1, self.v2, result))
+        return result
+    def subtract(self):
+        result = self.v1-self.v2
+        Cal._history.append("subtract : %d-%d=%d" % (self.v1, self.v2, result))
+        return result
+    def setV1(self, v):
+        if isinstance(v, int):
+            self.v1 = v
+    def getV1(self):
+        return self.v1
+    @classmethod
+    def history(cls):
+        for item in Cal._history:
+            print(item)
+class CalMultiply(Cal):
+    def multiply(self):
+        result = self.v1*self.v2
+        Cal._history.append("multiply : %d*%d=%d" % (self.v1, self.v2, result))
+        return result
+class CalDivide(CalMultiply):
+    def divide(self):
+        result = self.v1/self.v2
+        Cal._history.append("divide : %d/%d=%d" % (self.v1, self.v2, result))
+        return result
+c1 = CalMultiply(10,10)
+print(c1.add())
+print(c1.multiply())
+c2 = CalDivide(20,10)
+print(c2, c2.add())
+print(c2, c2.multiply())
+print(c2, c2.divide())
+Cal.history()
+
+class3은 class1가 가진 모든 메소드를 상속받은 상태임. 부모 클래스의 기능이 바뀌면 하위 클래스의 기능도 당연히 바뀜.
+상속의 응용, CalMultiply는 Cal이 갖고있는 모든 메소드를 상속받은 상태.
+CalDivide는 CalMultiply이 갖고있는 모든 메소드를 상속받은 상태.
+즉, 상속은 한번만 가능한게 아니라 여러번 가능 즉 상속의 상속의 상속... 이 가능.
+@이하는 장식자라고 하는건데 법칙이므로 그냥 외울것. 반드시 붙여야함.
+클래스_메소드는 인자로 cls를, 인스턴스-메소드는 self를 항상 첫번째 인자로 주어야 함. 이건 법칙임.
+스테틱 메소드와 클래스 메소드는 cs소속, 인스턴스 메소드는 인스턴스 소속임.
+Cal._history에서 _(언더바)를 붙이는 것은, 외부 말고 내부에서만 사용한다는 의미를 함축하고 있는 것. 참고로 history는 변수임
+%d+%d=%d" % (self.v1, self.v2, result)는 self.v1, self.v2, result)가 각각 위치에 맞춰 각각의 %d에 대입됨. ""와 ()사이의 %가 그 대입 역할을 수행함.
+
