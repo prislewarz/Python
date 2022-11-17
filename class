@@ -1,0 +1,56 @@
+class Calculator:
+  def setdata(self, first, second): #setdata라는 이름의 메소드
+    self.first=first
+    self.second=second
+
+  def add(self):
+    return self.first+self.second 
+
+a= Calculator()
+a.setdata(5,8)
+print(a.first, a.second)
+
+print(a.add())
+
+b= Calculator()
+b.setdata(11,13)
+print(b.add())    
+
+클래스 안의 함수는 메소드라고 함. 클래스 밖의 함수는 그냥 함수
+
+o.setdata(3,7)
+print(o.first)
+print(o.second)
+
+a=Calculator()
+b=Calculator()
+
+a.setdata(3,7)
+b.setdata(4,8)
+
+print(a.first, a.second)
+print(b.first, b.second)
+
+class Calculator:
+
+    def __init__(self,first,second):
+    self.first=first
+    self.second=second
+
+  def setdata(self,first,second):
+    self.first=first
+    self.second=second
+
+  def add(self):
+    result=self.first+self.second
+    return result
+
+  def mul(self):
+    result=self.first*self.second
+    return result   
+
+a=Calculator()
+a.setdata(8,5)
+
+print(a.add())
+print(a.mul())
